@@ -1,0 +1,65 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WP lab - Confirmation Info</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width:100%;
+    }
+    table, td, th {
+      border: 1px solid black;
+      padding: 3px 2px;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<section>
+  <header>
+    <h1>Balloon Order page - Order confirmation </h1>
+  </header>
+  <table>
+    <tr>
+      <th colspan="2">
+        Your Order Status
+      </th>
+    </tr>
+    <tr>
+      <td><b>Client Name </b></td>
+      <td><th:block th:text="${session.user.username}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Client Address </b></td>
+      <td><th:block th:text="${session.clientAddress}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Client IP Address</b></td>
+      <td><th:block th:text="${ipAddress}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Client Browser</b></td>
+      <td><th:block th:text="${clientAgent}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Balloon Color </b></td>
+      <td><th:block th:text="${session.order.balloonColor}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Balloon Size </b></td>
+      <td><th:block th:text="${session.order.balloonSize}"></th:block></td>
+    </tr>
+  </table>
+  <div>
+    <a href="/LogOut" class="btn btn-block btn-primary" >Log out</a>
+    <a  href="/orders" class="btn btn-block btn-success">User Orders</a>
+  </div>
+
+
+</section>
+</body>
+</html>

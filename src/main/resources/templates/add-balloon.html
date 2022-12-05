@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<!--za dodavanje i editiranje na balonot-->
+<!--за еден балон може да ги менуваме само името, описот и производитело-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <form action="/balloons/add" method="POST">
+                <div class="form-group">
+                    <label for="name">Balloon name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="name"
+                           name="name"
+                           th:value="(${balloon} != null ? ${balloon.getName()} : '')"
+                           required
+                           placeholder="Enter balloon name">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text"
+                           class="form-control"
+                           id="description"
+                           name="description"
+                           th:value="(${balloon} != null ? ${balloon.getDescription()} : '')"
+                           placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label>Manufacturer</label>
+                    <select name="manufacturer" class="form-control">
+                        <option th:if="${balloon} != null"
+                                th:selected="${balloon.getManufacturer() != null && balloon.getManufacturer().getId() == manufacturers.getId()}"
+                                th:each="manufacturers : ${manufacturers}"
+                                th:value="${manufacturers.getId()}"
+                                th:text="${manufacturers.getName()}">
+                        </option>
+                        <option th:if="${balloon} == null"
+                                th:each="manufacturers : ${manufacturers}"
+                                th:value="${manufacturers.getId()}"
+                                th:text="${manufacturers.getName()}">
+                        </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a type="button" class="btn btn-primary" href="/balloons">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

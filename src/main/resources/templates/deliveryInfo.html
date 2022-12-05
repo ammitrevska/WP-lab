@@ -1,0 +1,74 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WP lab - Delivery Info</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+    }
+
+    table, td, th {
+      border: 1px solid black;
+      padding: 3px 2px;
+    }
+
+    section {
+      float: left;
+      margin: 0 1.5%;
+      width: 63%;
+    }
+
+    aside {
+      float: right;
+      margin: 0 1.5%;
+      width: 30%;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header>
+  <h1>Balloon Order page - Delivery information </h1>
+</header>
+<section>
+
+  <form th:method="POST" th:action="@{/BalloonOrder}">
+    <label for="clientName">Client Name:</label><br/>
+    <input type="text" id="clientName" name="clientName"/><br/>
+    <label for="clientAddress">Delivery Address:</label><br/>
+    <textarea cols="40" rows="3" id="clientAddress" name="clientAddress"></textarea><br/>
+
+
+    <input type="submit" value="Submit">
+  </form>
+
+<!--  <form th:method="Post" th:action="">-->
+
+<!--  </form>-->
+
+</section>
+<aside>
+  <table>
+    <tr>
+      <th colspan="2">
+        Your Order Status
+      </th>
+    </tr>
+
+    <tr>
+      <td><b>Balloon Color </b></td>
+      <td><th:block th:text="${session.order.balloonColor}"></th:block></td>
+    </tr>
+    <tr>
+      <td><b>Balloon Size </b></td>
+      <td><th:block th:text="${session.order.balloonSize}"></th:block></td>
+    </tr>
+  </table>
+</aside>
+</body>
+</html>
