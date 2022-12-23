@@ -24,12 +24,15 @@
     <ul>
       <li th:each="balloon : ${balloons}">
         <th:block th:text="${balloon.name}"></th:block> (<th:block th:text="${balloon.description}"></th:block>)
+        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
         <form th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}" th:method="DELETE">
           <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash">Delete</i></button>
         </form>
-        <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}" class="btn btn-sm btn-info"><i class="fa fa-trash">Edit</i></a>
+          <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+          <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}" class="btn btn-sm btn-info"><i class="fa fa-trash">Edit</i></a>
       </li>
       <div>
+        <th:block sec:authorize="hasRole('ROLE_ADMIN')">
         <a href="/balloons/add-form" class="btn btn-block btn-dark">Add new product</a>
       </div>
     </ul>

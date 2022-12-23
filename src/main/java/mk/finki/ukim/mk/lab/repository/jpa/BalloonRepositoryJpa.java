@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface BalloonRepositoryJpa extends JpaRepository<Balloon, Long> {
 
-//
+
     void deleteByName(String name);
     List<Balloon> findAllByNameOrDescription(String name, String description);
 

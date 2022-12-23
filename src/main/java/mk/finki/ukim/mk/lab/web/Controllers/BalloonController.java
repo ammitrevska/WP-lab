@@ -22,8 +22,6 @@ public class BalloonController {
         this.manufacturerService = manufacturerService;
     }
 
-//TODO: imprement error in html
-
     @GetMapping
     //errorot se dobiva od neuspeshen povik na edit
     public String getBalloonsPage(@RequestParam(required = false) String error, Model model){
